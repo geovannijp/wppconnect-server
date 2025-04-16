@@ -1,6 +1,6 @@
 import { ServerOptions } from './types/ServerOptions';
 
-const config: ServerOptions = {
+export default {
   secretKey: 'sdyFa7hbjefdm',
   host: 'http://localhost',
   port: '21465',
@@ -40,13 +40,14 @@ const config: ServerOptions = {
     daysToArchive: 45,
   },
   log: {
-    level: 'silly',
+    level: 'silly', // Before open a issue, change level to silly and retry a action
     logger: ['console', 'file'],
   },
   createOptions: {
     browserArgs: [
       '--disable-web-security',
       '--no-sandbox',
+      '--disable-web-security',
       '--aggressive-cache-discard',
       '--disable-cache',
       '--disable-application-cache',
@@ -66,6 +67,14 @@ const config: ServerOptions = {
       '--ignore-ssl-errors',
       '--ignore-certificate-errors-spki-list',
     ],
+    /**
+     * Example of configuring the linkPreview generator
+     * If you set this to 'null', it will use global servers; however, you have the option to define your own server
+     * Clone the repository https://github.com/wppconnect-team/wa-js-api-server and host it on your server with ssl
+     *
+     * Configure the attribute as follows:
+     * linkPreviewApiServers: [ 'https://www.yourserver.com/wa-js-api-server' ]
+     */
     linkPreviewApiServers: null,
   },
   mapper: {
@@ -88,13 +97,11 @@ const config: ServerOptions = {
     redisPrefix: 'docker',
   },
   aws_s3: {
-    region: 'sa-east-1',
+    region: 'sa-east-1' as any,
     access_key_id: null,
     secret_key: null,
     defaultBucketName: null,
     endpoint: null,
     forcePathStyle: null,
   },
-};
-
-export default config;
+} as unknown as ServerOptions;
