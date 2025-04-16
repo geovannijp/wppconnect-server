@@ -1,7 +1,8 @@
 import { ServerOptions } from './types/ServerOptions';
 
-export default {
-  secretKey: process.env.SECRET_KEY || 'sdyFa7hbjefdm'
+export const config = {
+  secretKey: process.env.SECRET_KEY || 'sdyFa7hbjefdm',
+};
   host: 'http://localhost',
   port: '21465',
   deviceName: 'WppConnect',
