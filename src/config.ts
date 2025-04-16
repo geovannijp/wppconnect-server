@@ -24,24 +24,24 @@ export const config: ServerOptions = {
     onRevokedMessage: true,
     onLabelUpdated: true,
     onSelfMessage: false,
-    ignore: ['status@broadcast'],
+    ignore: ['status@broadcast']
   },
   websocket: {
     autoDownload: false,
-    uploadS3: false,
+    uploadS3: false
   },
   chatwoot: {
     sendQrCode: true,
-    sendStatus: true,
+    sendStatus: true
   },
   archive: {
     enable: false,
     waitTime: 10,
-    daysToArchive: 45,
+    daysToArchive: 45
   },
   log: {
     level: 'silly',
-    logger: ['console', 'file'],
+    logger: ['console', 'file']
   },
   createOptions: {
     browserArgs: [
@@ -65,13 +65,13 @@ export const config: ServerOptions = {
       '--safebrowsing-disable-auto-update',
       '--ignore-certificate-errors',
       '--ignore-ssl-errors',
-      '--ignore-certificate-errors-spki-list',
+      '--ignore-certificate-errors-spki-list'
     ],
-    linkPreviewApiServers: null,
+    linkPreviewApiServers: null
   },
   mapper: {
     enable: false,
-    prefix: 'tagone-',
+    prefix: 'tagone-'
   },
   db: {
     mongodbDatabase: 'tokens',
@@ -86,14 +86,14 @@ export const config: ServerOptions = {
     redisPort: 6379,
     redisPassword: '',
     redisDb: 0,
-    redisPrefix: 'docker',
+    redisPrefix: 'docker'
   },
   aws_s3: {
-    region: 'sa-east-1' as any,
+    region: 'sa-east-1',
     access_key_id: null,
     secret_key: null,
     defaultBucketName: null,
     endpoint: null,
-    forcePathStyle: null,
-  },
+    forcePathStyle: null
+  }
 };
