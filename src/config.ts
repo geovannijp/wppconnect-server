@@ -1,7 +1,7 @@
 import { ServerOptions } from './types/ServerOptions';
 
-export const config: ServerOptions = {
-  secretKey: process.env.SECRET_KEY || 'sdyFa7hbjefdm',
+export default {
+  secretKey: 'sdyFa7hbjefdm',
   host: 'http://localhost',
   port: '21465',
   deviceName: 'WppConnect',
@@ -24,24 +24,24 @@ export const config: ServerOptions = {
     onRevokedMessage: true,
     onLabelUpdated: true,
     onSelfMessage: false,
-    ignore: ['status@broadcast']
+    ignore: ['status@broadcast'],
   },
   websocket: {
     autoDownload: false,
-    uploadS3: false
+    uploadS3: false,
   },
   chatwoot: {
     sendQrCode: true,
-    sendStatus: true
+    sendStatus: true,
   },
   archive: {
     enable: false,
     waitTime: 10,
-    daysToArchive: 45
+    daysToArchive: 45,
   },
   log: {
-    level: 'silly',
-    logger: ['console', 'file']
+    level: 'silly', // Before open a issue, change level to silly and retry a action
+    logger: ['console', 'file'],
   },
   createOptions: {
     browserArgs: [
@@ -65,13 +65,21 @@ export const config: ServerOptions = {
       '--safebrowsing-disable-auto-update',
       '--ignore-certificate-errors',
       '--ignore-ssl-errors',
-      '--ignore-certificate-errors-spki-list'
+      '--ignore-certificate-errors-spki-list',
     ],
-    linkPreviewApiServers: null
+    /**
+     * Example of configuring the linkPreview generator
+     * If you set this to 'null', it will use global servers; however, you have the option to define your own server
+     * Clone the repository https://github.com/wppconnect-team/wa-js-api-server and host it on your server with ssl
+     *
+     * Configure the attribute as follows:
+     * linkPreviewApiServers: [ 'https://www.yourserver.com/wa-js-api-server' ]
+     */
+    linkPreviewApiServers: null,
   },
   mapper: {
     enable: false,
-    prefix: 'tagone-'
+    prefix: 'tagone-',
   },
   db: {
     mongodbDatabase: 'tokens',
@@ -86,14 +94,14 @@ export const config: ServerOptions = {
     redisPort: 6379,
     redisPassword: '',
     redisDb: 0,
-    redisPrefix: 'docker'
+    redisPrefix: 'docker',
   },
   aws_s3: {
-    region: 'sa-east-1',
+    region: 'sa-east-1' as any,
     access_key_id: null,
     secret_key: null,
     defaultBucketName: null,
     endpoint: null,
-    forcePathStyle: null
-  }
-};
+    forcePathStyle: null,
+  },
+} as unknown as ServerOptions;
