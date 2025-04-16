@@ -2,7 +2,6 @@ import { ServerOptions } from './types/ServerOptions';
 
 export const config = {
   secretKey: process.env.SECRET_KEY || 'sdyFa7hbjefdm',
-};
   host: 'http://localhost',
   port: '21465',
   deviceName: 'WppConnect',
@@ -41,7 +40,7 @@ export const config = {
     daysToArchive: 45,
   },
   log: {
-    level: 'silly', // Before open a issue, change level to silly and retry a action
+    level: 'silly',
     logger: ['console', 'file'],
   },
   createOptions: {
@@ -68,14 +67,6 @@ export const config = {
       '--ignore-ssl-errors',
       '--ignore-certificate-errors-spki-list',
     ],
-    /**
-     * Example of configuring the linkPreview generator
-     * If you set this to 'null', it will use global servers; however, you have the option to define your own server
-     * Clone the repository https://github.com/wppconnect-team/wa-js-api-server and host it on your server with ssl
-     *
-     * Configure the attribute as follows:
-     * linkPreviewApiServers: [ 'https://www.yourserver.com/wa-js-api-server' ]
-     */
     linkPreviewApiServers: null,
   },
   mapper: {
@@ -89,20 +80,4 @@ export const config = {
     mongodbPassword: '',
     mongodbHost: '',
     mongoIsRemote: true,
-    mongoURLRemote: '',
-    mongodbPort: 27017,
-    redisHost: 'localhost',
-    redisPort: 6379,
-    redisPassword: '',
-    redisDb: 0,
-    redisPrefix: 'docker',
-  },
-  aws_s3: {
-    region: 'sa-east-1' as any,
-    access_key_id: null,
-    secret_key: null,
-    defaultBucketName: null,
-    endpoint: null,
-    forcePathStyle: null,
-  },
-} as unknown as ServerOptions;
+    mongoURL
